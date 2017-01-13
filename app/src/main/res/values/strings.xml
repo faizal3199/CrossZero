@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Cross Zero</string>
+    <string name="crossPlays">Cross Plays</string>
+    <string name="zeroPlays">Zero Plays</string>
+    <string name="tie">It\'s a TIE!!</string>
+    <string name="crossWins">Cross Wins!!</string>
+    <string name="zeroWins">Zero Wins!!</string>
+    <string name="crossCheck">X</string>
+    <string name="zeroCheck">0</string>
+    <string name="letsPlay">Let\'s Play!!!</string>
+    <string name="playAgain">Play Again!!!</string>
+    <string name="startgame">Start Game</string>
+    <string name="label">Cross v/s Zero</string>
+</resources>
