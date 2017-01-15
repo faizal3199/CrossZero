@@ -11,4 +11,11 @@
     <string name="playAgain">Play Again!!!</string>
     <string name="startgame">Start Game</string>
     <string name="label">Cross v/s Zero</string>
+    <string name="chooseMode">Choose Your Mode</string>
+    <string name="humanHuman">Human v/s Human</string>
+    <string name="botBot">Human v/s Bot</string>
+    <string name="humanPlays">Human Plays</string>
+    <string name="botPlays">Bot is Thinking</string>
+    <string name="humanWins">You Win!!!</string>
+    <string name="botWins">You Loose!!!</string>
 </resources>

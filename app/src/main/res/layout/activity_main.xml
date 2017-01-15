@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -13,144 +14,40 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:textColor="#00897B"
-        android:layout_weight="0.9"
+        android:textColor="#5C6BC0"
+        android:layout_weight="1"
         android:layout_height="0dp"
         android:layout_marginBottom="0dp"
         android:textAlignment="center"
-        android:textSize="50sp"
-        android:text="@string/letsPlay"
-        android:onClick="FirstClick"
-        android:id="@+id/turnView" />
+        android:textSize="60sp"
+        android:text="@string/chooseMode"
+        android:id="@+id/chooseMode" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:visibility="visible"
         android:orientation="horizontal"
-        android:id="@+id/PlayAgain">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.7"/>
-        <Button
-            android:text="@string/startgame"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:id="@+id/button_renew"
-            android:layout_weight="1"
-            android:onClick="FirstClick"/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.7"/>
-    </LinearLayout>
+        android:layout_weight="2"
+        android:id="@+id/imageOption">
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:id="@+id/lay1"
-        android:orientation="horizontal"
-        android:visibility="invisible">
-        <TextView
+        <ImageView
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:background="@drawable/border"
             android:layout_height="match_parent"
-            android:textSize="100sp"
-            android:textAlignment="center"
-            android:onClick="playerClick"
-            android:id="@+id/id_1_3" />
-        <TextView
+            app:srcCompat="@drawable/human"
+            android:contentDescription="@string/humanHuman"
+            android:id="@+id/humanImage"
+            android:onClick="HumanIntent"
+            android:layout_margin="5dp" />
+        <ImageView
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:background="@drawable/border"
             android:layout_height="match_parent"
-            android:textSize="100sp"
-            android:textAlignment="center"
-            android:onClick="playerClick"
-            android:id="@+id/id_2_3"/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:background="@drawable/border"
-            android:layout_height="match_parent"
-            android:textSize="100sp"
-            android:textAlignment="center"
-            android:onClick="playerClick"
-            android:id="@+id/id_3_3"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:id="@+id/lay2"
-        android:orientation="horizontal"
-        android:visibility="invisible">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:background="@drawable/border"
-            android:layout_height="match_parent"
-            android:textSize="100sp"
-            android:textAlignment="center"
-            android:onClick="playerClick"
-            android:id="@+id/id_1_2"/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:background="@drawable/border"
-            android:layout_height="match_parent"
-            android:textSize="100sp"
-            android:textAlignment="center"
-            android:onClick="playerClick"
-            android:id="@+id/id_2_2"/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:background="@drawable/border"
-            android:layout_height="match_parent"
-            android:textSize="100sp"
-            android:textAlignment="center"
-            android:onClick="playerClick"
-            android:id="@+id/id_3_2"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:id="@+id/lay3"
-        android:orientation="horizontal"
-        android:visibility="invisible">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:background="@drawable/border"
-            android:layout_height="match_parent"
-            android:textSize="100sp"
-            android:textAlignment="center"
-            android:onClick="playerClick"
-            android:id="@+id/id_1_1"/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:background="@drawable/border"
-            android:layout_height="match_parent"
-            android:textSize="100sp"
-            android:textAlignment="center"
-            android:onClick="playerClick"
-            android:id="@+id/id_2_1"/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:background="@drawable/border"
-            android:layout_height="match_parent"
-            android:textSize="100sp"
-            android:textAlignment="center"
-            android:onClick="playerClick"
-            android:id="@+id/id_3_1"/>
+            app:srcCompat="@drawable/bot"
+            android:contentDescription="@string/botBot"
+            android:layout_margin="5dp"
+            android:onClick="BotIntent"
+            android:id="@+id/botImage" />
     </LinearLayout>
 </LinearLayout>
