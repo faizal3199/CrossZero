@@ -15,20 +15,23 @@ import java.util.Random;
 public class bot extends AppCompatActivity {
     final int playerValueHuman = 1;
     final int playerValueBot = 0;
+    int[][] arr = new int[3][3];
+    int turnIndex = 0;
+    int botTurnIndex=0;
+    int[] botArr = new int[9];
+
     boolean playerTurnHuman = false;
     boolean playerTurnBot = false;
     boolean gameContinues=true;
-    int[][] arr = new int[3][3];
+    boolean botPlaysFirst = true;
+    boolean firstClick = true;
+
     Random rn;
+
     LinearLayout lay1, lay2, lay3, PlayAgain;
     TextView turnView;
-    int turnIndex = 0;
-    int botTurnIndex=0;
-    boolean botPlaysFirst = true;
-    Button button;
-    boolean firstClick = true;
     TextView aa,ba,ca,ab,bb,cb,ac,bc,cc;
-    int[] botArr = new int[9];
+    Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -167,6 +170,7 @@ public class bot extends AppCompatActivity {
             }else{
                 playerTurnHuman=true;
                 turnView.setText(R.string.humanPlays);
+                botPlaysFirst=false;
             }
         }
     }
@@ -185,31 +189,373 @@ public class bot extends AppCompatActivity {
                         BotPlays();
                     }
                 }
-            }, 1000);
+            }, 800);
 
         }
     }
 
     protected void BotPlays(){
-        int x,y;
-        if(botPlaysFirst){
-            generateList();
-            botPlaysFirst=false;
-        }
-        for(int i=botTurnIndex;i<9;botTurnIndex++,i++){
-            y = botArr[i]/3;
-            x= botArr[i]%3;
-            if(arr[x][y]==10){
-                arr[x][y]=playerValueBot;
-                setZeroBot(botArr[i]);
-                break;
+        if((arr[0][0]+arr[1][1]+arr[2][2])==10){
+            if(arr[1][1]==10){
+                arr[1][1]=playerValueBot;
+                setZeroBot(4);
+            }
+            else if(arr[2][2]==10){
+                arr[2][2]=playerValueBot;
+                setZeroBot(8);
+            }
+            else if(arr[0][0]==10){
+                arr[0][0]=playerValueBot;
+                setZeroBot(0);
             }
         }
+        else if((arr[0][2]+arr[1][1]+arr[2][0])==10){
+            if(arr[1][1]==10){
+                arr[1][1]=playerValueBot;
+                setZeroBot(4);
+            }
+            else if(arr[0][2]==10){
+                arr[0][2]=playerValueBot;
+                setZeroBot(6);
+            }
+            else if(arr[2][0]==10){
+                arr[2][0]=playerValueBot;
+                setZeroBot(2);
+            }
+        }
+        else if((arr[1][0]+arr[1][1]+arr[1][2])==10){
+            if(arr[1][1]==10){
+                arr[1][1]=playerValueBot;
+                setZeroBot(4);
+            }
+            else if(arr[1][0]==10){
+                arr[1][0]=playerValueBot;
+                setZeroBot(1);
+            }
+            else if(arr[1][2]==10){
+                arr[1][2]=playerValueBot;
+                setZeroBot(7);
+            }
+        }
+        else if((arr[0][1]+arr[1][1]+arr[2][1])==10){
+            if(arr[1][1]==10){
+                arr[1][1]=playerValueBot;
+                setZeroBot(4);
+            }
+            else if(arr[2][1]==10){
+                arr[2][1]=playerValueBot;
+                setZeroBot(5);
+            }
+            else if(arr[0][1]==10){
+                arr[0][1]=playerValueBot;
+                setZeroBot(3);
+            }
+        }
+        else if((arr[0][0]+arr[0][1]+arr[0][2])==10){
+            if(arr[0][0]==10){
+                arr[0][0]=playerValueBot;
+                setZeroBot(0);
+            }
+            else if(arr[0][2]==10){
+                arr[0][2]=playerValueBot;
+                setZeroBot(6);
+            }
+            else if(arr[0][1]==10){
+                arr[0][1]=playerValueBot;
+                setZeroBot(3);
+            }
+        }
+        else if((arr[2][0]+arr[2][1]+arr[2][2])==10){
+            if(arr[2][2]==10){
+                arr[2][2]=playerValueBot;
+                setZeroBot(8);
+            }
+            else if(arr[2][0]==10){
+                arr[2][0]=playerValueBot;
+                setZeroBot(2);
+            }
+            else if(arr[2][1]==10){
+                arr[2][1]=playerValueBot;
+                setZeroBot(5);
+            }
+        }
+        else if((arr[0][0]+arr[1][0]+arr[2][0])==10){
+            if(arr[0][0]==10){
+                arr[0][0]=playerValueBot;
+                setZeroBot(0);
+            }
+            else if(arr[2][0]==10){
+                arr[2][0]=playerValueBot;
+                setZeroBot(2);
+            }
+            else if(arr[1][0]==10){
+                arr[1][0]=playerValueBot;
+                setZeroBot(1);
+            }
+        }
+        else if((arr[0][2]+arr[1][2]+arr[2][2])==10){
+            if(arr[2][2]==10){
+                arr[2][2]=playerValueBot;
+                setZeroBot(8);
+            }
+            else if(arr[0][2]==10){
+                arr[0][2]=playerValueBot;
+                setZeroBot(6);
+            }
+            else if(arr[1][2]==10){
+                arr[1][2]=playerValueBot;
+                setZeroBot(7);
+            }
+        }
+        else if((arr[0][0]+arr[1][1]+arr[2][2])==12){
+            if(arr[1][1]==10){
+                arr[1][1]=playerValueBot;
+                setZeroBot(4);
+            }
+            else if(arr[2][2]==10){
+                arr[2][2]=playerValueBot;
+                setZeroBot(8);
+            }
+            else if(arr[0][0]==10){
+                arr[0][0]=playerValueBot;
+                setZeroBot(0);
+            }
+        }
+        else if((arr[0][2]+arr[1][1]+arr[2][0])==12){
+            if(arr[1][1]==10){
+                arr[1][1]=playerValueBot;
+                setZeroBot(4);
+            }
+            else if(arr[0][2]==10){
+                arr[0][2]=playerValueBot;
+                setZeroBot(6);
+            }
+            else if(arr[2][0]==10){
+                arr[2][0]=playerValueBot;
+                setZeroBot(2);
+            }
+        }
+        else if((arr[1][0]+arr[1][1]+arr[1][2])==12){
+            if(arr[1][1]==10){
+                arr[1][1]=playerValueBot;
+                setZeroBot(4);
+            }
+            else if(arr[1][0]==10){
+                arr[1][0]=playerValueBot;
+                setZeroBot(1);
+            }
+            else if(arr[1][2]==10){
+                arr[1][2]=playerValueBot;
+                setZeroBot(7);
+            }
+        }
+        else if((arr[0][1]+arr[1][1]+arr[2][1])==12){
+            if(arr[1][1]==10){
+                arr[1][1]=playerValueBot;
+                setZeroBot(4);
+            }
+            else if(arr[2][1]==10){
+                arr[2][1]=playerValueBot;
+                setZeroBot(5);
+            }
+            else if(arr[0][1]==10){
+                arr[0][1]=playerValueBot;
+                setZeroBot(3);
+            }
+        }
+        else if((arr[0][0]+arr[0][1]+arr[0][2])==12){
+            if(arr[0][0]==10){
+                arr[0][0]=playerValueBot;
+                setZeroBot(0);
+            }
+            else if(arr[0][2]==10){
+                arr[0][2]=playerValueBot;
+                setZeroBot(6);
+            }
+            else if(arr[0][1]==10){
+                arr[0][1]=playerValueBot;
+                setZeroBot(3);
+            }
+        }
+        else if((arr[2][0]+arr[2][1]+arr[2][2])==12){
+            if(arr[2][2]==10){
+                arr[2][2]=playerValueBot;
+                setZeroBot(8);
+            }
+            else if(arr[2][0]==10){
+                arr[2][0]=playerValueBot;
+                setZeroBot(2);
+            }
+            else if(arr[2][1]==10){
+                arr[2][1]=playerValueBot;
+                setZeroBot(5);
+            }
+        }
+        else if((arr[0][0]+arr[1][0]+arr[2][0])==12){
+            if(arr[0][0]==10){
+                arr[0][0]=playerValueBot;
+                setZeroBot(0);
+            }
+            else if(arr[2][0]==10){
+                arr[2][0]=playerValueBot;
+                setZeroBot(2);
+            }
+            else if(arr[1][0]==10){
+                arr[1][0]=playerValueBot;
+                setZeroBot(1);
+            }
+        }
+        else if((arr[0][2]+arr[1][2]+arr[2][2])==12){
+            if(arr[2][2]==10){
+                arr[2][2]=playerValueBot;
+                setZeroBot(8);
+            }
+            else if(arr[0][2]==10){
+                arr[0][2]=playerValueBot;
+                setZeroBot(6);
+            }
+            else if(arr[1][2]==10){
+                arr[1][2]=playerValueBot;
+                setZeroBot(7);
+            }
+        }
+        else if((arr[0][0]+arr[1][1]+arr[2][2])==21){
+            if(arr[1][1]==10){
+                arr[1][1]=playerValueBot;
+                setZeroBot(4);
+            }
+            else if(arr[2][2]==10){
+                arr[2][2]=playerValueBot;
+                setZeroBot(8);
+            }
+            else if(arr[0][0]==10){
+                arr[0][0]=playerValueBot;
+                setZeroBot(0);
+            }
+        }
+        else if((arr[0][2]+arr[1][1]+arr[2][0])==21){
+            if(arr[1][1]==10){
+                arr[1][1]=playerValueBot;
+                setZeroBot(4);
+            }
+            else if(arr[0][2]==10){
+                arr[0][2]=playerValueBot;
+                setZeroBot(6);
+            }
+            else if(arr[2][0]==10){
+                arr[2][0]=playerValueBot;
+                setZeroBot(2);
+            }
+        }
+        else if((arr[1][0]+arr[1][1]+arr[1][2])==21){
+            if(arr[1][1]==10){
+                arr[1][1]=playerValueBot;
+                setZeroBot(4);
+            }
+            else if(arr[1][0]==10){
+                arr[1][0]=playerValueBot;
+                setZeroBot(1);
+            }
+            else if(arr[1][2]==10){
+                arr[1][2]=playerValueBot;
+                setZeroBot(7);
+            }
+        }
+        else if((arr[0][1]+arr[1][1]+arr[2][1])==21){
+            if(arr[1][1]==10){
+                arr[1][1]=playerValueBot;
+                setZeroBot(4);
+            }
+            else if(arr[2][1]==10){
+                arr[2][1]=playerValueBot;
+                setZeroBot(5);
+            }
+            else if(arr[0][1]==10){
+                arr[0][1]=playerValueBot;
+                setZeroBot(3);
+            }
+        }
+        else if((arr[0][0]+arr[0][1]+arr[0][2])==21){
+            if(arr[0][0]==10){
+                arr[0][0]=playerValueBot;
+                setZeroBot(0);
+            }
+            else if(arr[0][2]==10){
+                arr[0][2]=playerValueBot;
+                setZeroBot(6);
+            }
+            else if(arr[0][1]==10){
+                arr[0][1]=playerValueBot;
+                setZeroBot(3);
+            }
+        }
+        else if((arr[2][0]+arr[2][1]+arr[2][2])==21){
+            if(arr[2][2]==10){
+                arr[2][2]=playerValueBot;
+                setZeroBot(8);
+            }
+            else if(arr[2][0]==10){
+                arr[2][0]=playerValueBot;
+                setZeroBot(2);
+            }
+            else if(arr[2][1]==10){
+                arr[2][1]=playerValueBot;
+                setZeroBot(5);
+            }
+        }
+        else if((arr[0][0]+arr[1][0]+arr[2][0])==21){
+            if(arr[0][0]==10){
+                arr[0][0]=playerValueBot;
+                setZeroBot(0);
+            }
+            else if(arr[2][0]==10){
+                arr[2][0]=playerValueBot;
+                setZeroBot(2);
+            }
+            else if(arr[1][0]==10){
+                arr[1][0]=playerValueBot;
+                setZeroBot(1);
+            }
+        }
+        else if((arr[0][2]+arr[1][2]+arr[2][2])==21){
+            if(arr[2][2]==10){
+                arr[2][2]=playerValueBot;
+                setZeroBot(8);
+            }
+            else if(arr[0][2]==10){
+                arr[0][2]=playerValueBot;
+                setZeroBot(6);
+            }
+            else if(arr[1][2]==10){
+                arr[1][2]=playerValueBot;
+                setZeroBot(7);
+            }
+        }
+        else if(botPlaysFirst){
+            arr[1][1]=playerValueBot;
+            setZeroBot(4);
+            botPlaysFirst=false;
+        }
+        else if(turnIndex==8){
+            Log.v("appVerboseFaizal","It was accessed");
+            label:
+            for(int i=0;i<3;i++){
+                for(int j=0;j<3;j++){
+                    if(arr[i][j]==10){
+                        arr[i][j]=playerValueBot;
+                        setZeroBot(i+j*3);
+                        break label;
+                    }
+                }
+            }
+        }
+
         checkWin(playerValueBot*3);
         if(gameContinues){
             turnView.setText(R.string.humanPlays);
         }
     }
+
 
     protected void setZeroBot(int i){
         if(i==0){
