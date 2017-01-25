@@ -17,5 +17,5 @@
     <string name="humanPlays">Human Plays</string>
     <string name="botPlays">Bot is Thinking</string>
     <string name="humanWins">You Win!!!</string>
-    <string name="botWins">You Loose!!!</string>
+    <string name="botWins">You Lose!!!</string>
 </resources>

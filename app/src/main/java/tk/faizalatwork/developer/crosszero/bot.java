@@ -21,6 +21,7 @@ public class bot extends AppCompatActivity {
     int[] botArr = new int[9];
 
     boolean playerTurnHuman = false;
+    boolean BotIsThinking = false;
     boolean playerTurnBot = false;
     boolean gameContinues=true;
     boolean botPlaysFirst = true;
@@ -83,74 +84,110 @@ public class bot extends AppCompatActivity {
         aa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(BotIsThinking){
+                    return;
+                }
                 TextView view = (TextView)v;
-                view.setText(R.string.crossCheck);
-                HumanPlays(0,0);
+                if((HumanPlays(0,0))){
+                    view.setText(R.string.crossCheck);
+                }
             }
         });
         ab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(BotIsThinking){
+                    return;
+                }
                 TextView view = (TextView)v;
-                view.setText(R.string.crossCheck);
-                HumanPlays(0,1);
+                if(HumanPlays(0,1)){
+                    view.setText(R.string.crossCheck);
+                }
             }
         });
         ac.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(BotIsThinking){
+                    return;
+                }
                 TextView view = (TextView)v;
-                view.setText(R.string.crossCheck);
-                HumanPlays(0,2);
+                if(HumanPlays(0,2)){
+                    view.setText(R.string.crossCheck);
+                }
             }
         });
         ba.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(BotIsThinking){
+                    return;
+                }
                 TextView view = (TextView)v;
-                view.setText(R.string.crossCheck);
-                HumanPlays(1,0);
+                if(HumanPlays(1,0)){
+                    view.setText(R.string.crossCheck);
+                }
             }
         });
         bb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(BotIsThinking){
+                    return;
+                }
                 TextView view = (TextView)v;
-                view.setText(R.string.crossCheck);
-                HumanPlays(1,1);
+                if(HumanPlays(1,1)){
+                    view.setText(R.string.crossCheck);
+                }
             }
         });
         bc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(BotIsThinking){
+                    return;
+                }
                 TextView view = (TextView)v;
-                view.setText(R.string.crossCheck);
-                HumanPlays(1,2);
+                if(HumanPlays(1,2)){
+                    view.setText(R.string.crossCheck);
+                }
             }
         });
 
         ca.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(BotIsThinking){
+                    return;
+                }
                 TextView view = (TextView)v;
-                view.setText(R.string.crossCheck);
-                HumanPlays(2,0);
+                if(HumanPlays(2,0)){
+                    view.setText(R.string.crossCheck);
+                }
             }
         });
         cb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(BotIsThinking){
+                    return;
+                }
                 TextView view = (TextView)v;
-                view.setText(R.string.crossCheck);
-                HumanPlays(2,1);
+                if(HumanPlays(2,1)){
+                    view.setText(R.string.crossCheck);
+                }
             }
         });
         cc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(BotIsThinking){
+                    return;
+                }
                 TextView view = (TextView)v;
-                view.setText(R.string.crossCheck);
-                HumanPlays(2,2);
+                if(HumanPlays(2,2)){
+                    view.setText(R.string.crossCheck);
+                }
             }
         });
     }
@@ -175,12 +212,19 @@ public class bot extends AppCompatActivity {
         }
     }
 
-    protected void HumanPlays(int x,int y){
+    protected boolean HumanPlays(int x,int y){
+        if(!(arr[x][y]==10)){
+            return false;
+        }
+        if(!gameContinues){
+            return false;
+        }
         arr[x][y]=playerValueHuman;
         checkWin(playerValueHuman*3);
         if(gameContinues) {
             turnView.setText(R.string.botPlays);
 
+            BotIsThinking=true;
             final Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
@@ -188,10 +232,11 @@ public class bot extends AppCompatActivity {
                     if (turnIndex != 9) {
                         BotPlays();
                     }
+                    BotIsThinking=false;
                 }
             }, 800);
-
         }
+        return true;
     }
 
     protected void BotPlays(){
@@ -537,7 +582,6 @@ public class bot extends AppCompatActivity {
             botPlaysFirst=false;
         }
         else if(turnIndex==8){
-            Log.v("appVerboseFaizal","It was accessed");
             label:
             for(int i=0;i<3;i++){
                 for(int j=0;j<3;j++){

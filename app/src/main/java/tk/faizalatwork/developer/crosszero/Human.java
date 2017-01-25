@@ -51,6 +51,10 @@ public class Human extends AppCompatActivity {
         int coordX = Integer.valueOf(arrGetID[1]);
         int coordY = Integer.valueOf(arrGetID[2]);
 
+        if(!(arr[coordX-1][coordY-1]==10)) {
+            return;
+        }
+
         if(gameContinues) {
             if (playerTurnCross) {
                 changeData(playerValueCross, coordX - 1, coordY - 1);
